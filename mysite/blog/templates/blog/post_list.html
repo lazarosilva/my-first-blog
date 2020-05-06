@@ -8,7 +8,9 @@
                     {{ post.published_date }}
                 </div>
             {% endif %}
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            {% if user.is_authenticated %}
+                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            {% endif %}
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
     {% endfor %}
